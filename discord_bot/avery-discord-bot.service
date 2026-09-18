@@ -1,0 +1,19 @@
+[Unit]
+Description=Avery House Discord bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+WorkingDirectory=/srv/avery-website/discord_bot
+EnvironmentFile=/srv/avery-website/discord_bot/.env
+ExecStart=/usr/bin/python3 bot.py
+Restart=always
+RestartSec=10
+User=www-data
+Group=www-data
+NoNewPrivileges=yes
+ProtectSystem=full
+ProtectHome=True
+
+[Install]
+WantedBy=multi-user.target
