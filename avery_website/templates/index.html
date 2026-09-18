@@ -1,14 +1,63 @@
 {% extends "layout.html" %}
 {% block body %}
-    <div class="container">
+<div class="container">
+    <section class="hero">
+        <div class="hero-text">
             <h1>Welcome to Avery</h1>
-            <h2>A Very Fine House</h2>
+            <p class="lede">A Very Fine House</p>
             <p>Avery House is one of the eight undergraduate houses at Caltech. Founded in 1996, Avery served as graduate student and faculty housing until 2004, when the Faculty Advisory Board decided to allow underclassmen to rotate into Avery.</p>
+            <div class="actions">
+                <a class="button" href="{{ url_for('rotation_video') }}">Watch the rotation video</a>
+                <a class="text-link" href="https://www.instagram.com/avery.glory/">Follow on Instagram</a>
+            </div>
+        </div>
+        <figure>
+            <img src="{{ url_for('static', filename='img/beach.jpg') }}" alt="AVERY written in the sand at the beach, with house members looking on" width="960" height="720">
+            <figcaption class="label">House beach trip</figcaption>
+        </figure>
+    </section>
+
+    <ul class="facts">
+        <li><span class="label">Founded</span><span class="value">1996</span></li>
+        <li><span class="label">Undergraduate house since</span><span class="value">2004</span></li>
+        <li><span class="label">Members</span><span class="value">250+</span></li>
+    </ul>
+
+    <section class="section split">
+        <h2>Creativity, Integrity, Tenacity</h2>
+        <div class="prose">
             <p>Currently, we have grown to become the largest house on campus, boasting over 250 total members. We extend open arms to those that wish to join our growing Avery family.</p>
-            <h2>Creativity, Integrity, Tenacity</h2>
             <p>Because of our large size, it's difficult to describe Avery with a single phrase. Instead, Avery fully embraces the diversity of its constituents.</p>
             <p>Through social events such as Karaoke Night and Faculty Dessert Night, we showcase our unique talents to the rest of campus.</p>
             <p>We regularly host house gatherings such as our annual beach and ski trips, encouraging friendship and cohesion between house members.</p>
             <p>We take pride in our acceptance and diversity, and hope that Avery will serve as a comfortable home for our members for many years to come.</p>
         </div>
+    </section>
+
+    <section class="section split">
+        <h2>Around the house</h2>
+        <ul class="rows">
+            <li><a href="{{ url_for('rotation_video') }}">
+                <span class="row-title">Rotation videos</span>
+                <span class="row-desc">The 2025 video, plus every year back to 2013.</span>
+                <span class="row-arrow" aria-hidden="true">&rarr;</span>
+            </a></li>
+            <li><a href="https://www.youtube.com/@averyhouse5450">
+                <span class="row-title">Faculty Dessert Night</span>
+                <span class="row-desc">Performances from this year's show, on YouTube.</span>
+                <span class="row-arrow" aria-hidden="true">&rarr;</span>
+            </a></li>
+            <li><a href="{{ url_for('constitution') }}">
+                <span class="row-title">Constitution</span>
+                <span class="row-desc">Membership, officers, elections, and room picks.</span>
+                <span class="row-arrow" aria-hidden="true">&rarr;</span>
+            </a></li>
+            <li><a href="{{ url_for('members') }}">
+                <span class="row-title">Members</span>
+                <span class="row-desc">House documents and forms. Sign-in required.</span>
+                <span class="row-arrow" aria-hidden="true">&rarr;</span>
+            </a></li>
+        </ul>
+    </section>
+</div>
 {% endblock %}

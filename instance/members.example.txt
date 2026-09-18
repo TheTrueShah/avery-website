@@ -1,0 +1,4 @@
+# Copy to instance/members.txt. One email per line; these accounts can open /members/.
+# Anything after a # is a comment. Changes take effect immediately, no restart needed.
+chancellor@caltech.edu     # Chancellor
+secretary@caltech.edu      # Secretary

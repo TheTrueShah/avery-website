@@ -2,51 +2,56 @@
 <html lang="en">
 
 <head>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Avery House, one of the eight undergraduate houses at Caltech.">
     <title>{% block title %}Welcome{% endblock %} | Avery</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spectral">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:600"> {% endblock %}
+    {% block head %}{% endblock %}
 </head>
 
 <body>
-    <main class="wrapper">
-        <div class="container container-center">
-            <a href="{{ url_for('index') }}">
-                <img class="brand-logo" src="{{ url_for('static', filename='logo_purple.png')}}" alt="Avery logo">
+    <header class="site-header">
+        <div class="bar">
+            <a class="brand" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" width="46" height="40">
+                <span>Avery House</span>
             </a>
+            <nav aria-label="Site">
+                <ul>
+                    {%- set nav = [('index', 'Home'), ('events', 'Events'), ('constitution', 'Constitution'), ('rotation_video', 'Rotation Video'), ('members', 'Members')] %}
+                    {%- for endpoint, label in nav %}
+                    {%- set here = request.endpoint == endpoint or (endpoint == 'members' and (request.endpoint or '').startswith('members')) %}
+                    <li><a href="{{ url_for(endpoint) }}"{% if here %} aria-current="page"{% endif %}>{{ label }}</a></li>
+                    {%- endfor %}
+                </ul>
+            </nav>
         </div>
-        <div class="navbar">
-            <div class="container container-center">
-                <a href="{{ url_for('index') }}">Home</a> |
-                <a href="https://www.facebook.com/pg/averyglory/photos">Facebook</a> |
-                <a href="https://www.instagram.com/avery.glory/">Instagram</a> |
-                <a href="{{ url_for('events') }}">Events</a> |
-                <a href="{{ url_for('constitution') }}">Constitution</a> |
-                <a href="{{ url_for('rotation_video') }}">Rotation Video</a>
-            </div>
-        </div>
-        {% block body %} {% endblock %}
+    </header>
+
+    <main id="main">
+{% block body %}{% endblock %}
     </main>
-    <script type="text/javascript">
-        var wrapper = document.getElementsByClassName('wrapper')[0];
-        var navbar = document.getElementsByClassName('navbar')[0];
-        var fixed_navbar = navbar.cloneNode(true);
-        var is_fixed = false;
-        fixed_navbar.classList.add('navbar-fixed-top');
-        console.log('starting');
-        window.onscroll = function() {
-            console.log(window.scrollY);
-            if (navbar.getBoundingClientRect().top < 0 && !is_fixed) {
-                wrapper.appendChild(fixed_navbar);
-                is_fixed = true;
-            } else if (navbar.getBoundingClientRect().top >= 0 && is_fixed) {
-                wrapper.removeChild(fixed_navbar);
-                is_fixed = false;
-            }
-        };
-    </script>
-    {% block scripts %} {% endblock %}
+
+    <footer class="site-footer">
+        <div class="bar">
+            <div class="foot-brand">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" width="46" height="40">
+                <p><strong>Avery House</strong><br>California Institute of Technology<br>Pasadena, California</p>
+            </div>
+            <ul class="foot-links">
+                <li><a href="https://www.instagram.com/avery.glory/">Instagram</a></li>
+                <li><a href="https://www.youtube.com/@averyhouse5450">YouTube</a></li>
+                <li><a href="https://www.facebook.com/averyglory">Facebook</a></li>
+                <li><a href="https://github.com/averyhouse">GitHub</a></li>
+            </ul>
+        </div>
+    </footer>
+    {% block scripts %}{% endblock %}
 </body>
+
+</html>

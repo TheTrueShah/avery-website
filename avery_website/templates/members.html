@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}Members{% endblock %}
+{% block body %}
+<div class="container">
+    <header class="page-head">
+        <h1>Members</h1>
+        <div class="signed-in">
+            <span>Signed in as {{ member.name }} ({{ member.email }})</span>
+            <a href="{{ url_for('members_logout') }}">Sign out</a>
+        </div>
+    </header>
+
+    {% if links %}
+    <section class="section split">
+        <h2>Links</h2>
+        <ul class="rows">
+            {% for link in links %}
+            <li><a href="{{ link.url }}">
+                <span class="row-title">{{ link.title }}</span>
+                <span class="row-arrow" aria-hidden="true">&rarr;</span>
+            </a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
+    <section class="section split">
+        <h2>Files</h2>
+        {% if files %}
+        <div class="table-wrap">
+            <table class="files">
+                <thead>
+                    <tr><th class="label">Name</th><th class="label num">Size</th><th class="label num">Updated</th></tr>
+                </thead>
+                <tbody>
+                    {% for f in files %}
+                    <tr>
+                        <td><a href="{{ url_for('members_file', name=f.name) }}">{{ f.name }}</a></td>
+                        <td class="num">{{ f.size | filesize }}</td>
+                        <td class="num">{{ f.modified.strftime('%b %-d, %Y') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="empty">Nothing here yet.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

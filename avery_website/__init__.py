@@ -1,9 +1,7 @@
-from .app import constitution_hook
 import os
+from .app import app, constitution_hook
 
-constitution_contents = 'templates/constitution-contents.html'
-print("working")
-if not os.path.exists(constitution_contents) or \
-        os.stat(constitution_contents).st_size == 0:
-    print("doing hook")
+# Generate the constitution page on first start if it hasn't been built yet.
+_contents = os.path.join(app.root_path, 'templates', 'constitution-contents.html')
+if not os.path.exists(_contents) or os.stat(_contents).st_size == 0:
     constitution_hook()

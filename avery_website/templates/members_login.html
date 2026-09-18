@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Members{% endblock %}
+{% block body %}
+<div class="container">
+    <header class="page-head">
+        <h1>Members</h1>
+    </header>
+    <div class="narrow stack">
+        <p>House documents, forms, and links for current Avery members. Sign in with your Caltech Google account. Access is limited to people on the house member list.</p>
+        {% if denied %}
+        <p class="notice"><strong>{{ denied }}</strong> isn't on the member list. If you're a member, ask the Secretary to add you, or try a different account.</p>
+        {% endif %}
+        {% if configured %}
+        <div class="actions">
+            <a class="button" href="{{ url_for('members_login_google') }}">Sign in with Google</a>
+        </div>
+        {% else %}
+        <p class="notice">Sign-in isn't set up on this server yet. See the README for the Google setup steps.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

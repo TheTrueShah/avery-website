@@ -1,8 +1,29 @@
-{% extends "layout.html" %} {% block title %}Rotation Video 2022{% endblock %} {% block body %}
+{% extends "layout.html" %}
+{% block title %}Rotation Video{% endblock %}
+{% block body %}
+{# To change the featured video, put the new year first in this list. #}
+{% set videos = [
+    ('2025', 'GmWlvrBQ_pc'), ('2024', 'asEoonegbzg'), ('2023', 'UGaUIf-DgvQ'),
+    ('2022', 'KzUA6oxJBWY'), ('2021', 'lsNqQPZUIQg'), ('2019', 'EVrdC7ixITI'),
+    ('2014', 'GQRRZop_MwA'), ('2013', 'OUdersG_GlA')] %}
+{% set playlist = 'PLMlgeleJSDwNaUbliMVV-ooD1SvqGr3WL' %}
 <div class="container">
-    <h1>Rotation Video 2022!</h1>
-    <video width="100%" controls=controls>
-        <source src="../static/2022_Avery_Rotation_Video.mp4" type="video/mp4">
-    </video>
+    <header class="page-head">
+        <h1>Rotation Video {{ videos[0][0] }}!</h1>
+    </header>
+    <iframe class="video"
+        src="https://www.youtube-nocookie.com/embed/{{ videos[0][1] }}?list={{ playlist }}"
+        title="{{ videos[0][0] }} Avery Rotation Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen loading="lazy"></iframe>
+
+    <section class="section">
+        <span class="label">Past years</span>
+        <ul class="years">
+            {% for year, id in videos[1:] %}
+            <li><a href="https://www.youtube.com/watch?v={{ id }}&amp;list={{ playlist }}">{{ year }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
 {% endblock %}

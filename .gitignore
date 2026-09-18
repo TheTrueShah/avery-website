@@ -59,8 +59,14 @@ coverage.xml
 *.log
 local_settings.py
 
-# Flask stuff:
-instance/
+# Flask stuff: server-specific config, member list, and shared files
+instance/*
+!instance/config.example.py
+!instance/members.example.txt
+!instance/links.example.txt
+!instance/files/
+instance/files/*
+!instance/files/.gitkeep
 .webassets-cache
 
 # Scrapy stuff:

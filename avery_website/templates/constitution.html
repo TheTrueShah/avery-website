@@ -1,9 +1,27 @@
 {% extends "layout.html" %}
 {% block title %}Constitution{% endblock %}
 {% block body %}
-    <div class="container">
-        {% include 'constitution-contents.html' ignore missing %}
-        <hr>
-        <i>Constitution repo with version history available on <a href="https://github.com/averyhouse/constitution">GitHub</a></i>
+<div class="container">
+    <header class="page-head">
+        <h1>Constitution</h1>
+    </header>
+    <div class="doc">
+        {% if toc %}
+        <nav class="toc" aria-label="Contents">
+            <span class="label">Contents</span>
+            <ol>
+                {% for item in toc %}
+                <li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ol>
+        </nav>
+        {% endif %}
+        <div>
+            <div class="prose constitution">
+                {% include 'constitution-contents.html' ignore missing %}
+            </div>
+            <p class="source">Constitution repo with version history available on <a href="https://github.com/averyhouse/constitution">GitHub</a>.</p>
+        </div>
     </div>
+</div>
 {% endblock %}

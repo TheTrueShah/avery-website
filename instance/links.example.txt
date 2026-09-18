@@ -1,0 +1,4 @@
+# Copy to instance/links.txt. Each line is:  Title | URL
+# These show up on the members page above the files list.
+Reimbursement form | https://forms.gle/your-form-id
+House meeting minutes | https://drive.google.com/drive/folders/your-folder-id

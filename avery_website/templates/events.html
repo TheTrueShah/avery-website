@@ -1,15 +1,47 @@
 {% extends "layout.html" %}
 {% block title %}Events{% endblock %}
 {% block body %}
-    <div class="container">
-            <h1>Upcoming Events</h1>
-            {% if events %}
-                {% for event in events %}
-                <p><b>{{ event['summary'] }}</b>: {{ event.timeDateStr }}</p>
-                <p>{{ event['description'] }}</p>
-                {% endfor %}
-            {% else %}
-                <p>No upcoming events.<p>
-            {% endif %}
-        </div>
+<div class="container">
+    <header class="page-head">
+        <h1>Events</h1>
+    </header>
+
+    <section class="section split">
+        <h2>Upcoming</h2>
+        {% if events %}
+        <ul class="rows">
+            {% for event in events %}
+            <li><div class="row">
+                <span class="row-title">{{ event['summary'] }}</span>
+                <span class="row-desc">{{ event.timeDateStr }}{% if event['description'] %} &middot; {{ event['description'] }}{% endif %}</span>
+            </div></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">No upcoming events posted yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="section split">
+        <h2>Every year</h2>
+        <ul class="rows">
+            <li><div class="row">
+                <span class="row-title">Karaoke Night</span>
+                <span class="row-desc">Open to the rest of campus.</span>
+            </div></li>
+            <li><div class="row">
+                <span class="row-title">Faculty Dessert Night</span>
+                <span class="row-desc">House members perform for faculty and campus guests.</span>
+            </div></li>
+            <li><div class="row">
+                <span class="row-title">Beach trip</span>
+                <span class="row-desc">A house day at the beach.</span>
+            </div></li>
+            <li><div class="row">
+                <span class="row-title">Ski trip</span>
+                <span class="row-desc">A house weekend in the snow.</span>
+            </div></li>
+        </ul>
+    </section>
+</div>
 {% endblock %}
