@@ -1,0 +1,4 @@
+# The token and the database (names and emails) never go to GitHub.
+.env
+data/
+__pycache__/
