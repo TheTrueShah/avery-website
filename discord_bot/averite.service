@@ -1,5 +1,5 @@
 [Unit]
-Description=Avery House Discord bot
+Description=Averite, the Avery House Discord bot
 Wants=network-online.target
 After=network-online.target
 

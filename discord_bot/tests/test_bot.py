@@ -230,8 +230,8 @@ class Flows(unittest.IsolatedAsyncioTestCase):
 
 class Smoke(unittest.IsolatedAsyncioTestCase):
     async def test_every_command_loads_and_serializes(self):
-        from bot import EXTENSIONS, AveryBot
-        bot = AveryBot(db=Database(':memory:'))
+        from bot import EXTENSIONS, Averite
+        bot = Averite(db=Database(':memory:'))
         for extension in EXTENSIONS:
             await bot.load_extension(extension)
         payload = [c.to_dict(bot.tree) for c in bot.tree.get_commands()]

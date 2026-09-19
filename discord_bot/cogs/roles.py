@@ -17,7 +17,7 @@ from discord.ext import commands
 from logic import plan_toggle
 from .common import is_elevated, role_problem
 
-log = logging.getLogger('avery-bot.roles')
+log = logging.getLogger('averite.roles')
 AVERY_PURPLE = 0xA279B6
 MAX_BUTTONS = 25  # Discord allows 5 rows of 5 buttons on one message
 

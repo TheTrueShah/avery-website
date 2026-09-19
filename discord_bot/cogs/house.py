@@ -8,7 +8,7 @@ from discord.ext import commands, tasks
 
 from constitution import SITE, Constitution
 
-log = logging.getLogger('avery-bot.house')
+log = logging.getLogger('averite.house')
 AVERY_PURPLE = 0xA279B6
 
 LINKS = [

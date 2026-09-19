@@ -16,7 +16,7 @@ from logic import (clean_name, is_caltech, name_problem, normalize_email,
                    parse_roster, valid_email)
 from .common import role_problem
 
-log = logging.getLogger('avery-bot.verification')
+log = logging.getLogger('averite.verification')
 AVERY_PURPLE = 0xA279B6
 MEMBERSHIP_ROLES = {'full': 'Full Member', 'social': 'Social Member'}
 

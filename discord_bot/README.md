@@ -1,6 +1,6 @@
-# Avery Discord bot
+# Averite
 
-A bot for the Avery House Discord server. It is a separate program from the website. It lives in this repo so the house's code is in one place.
+Averite is the bot for the Avery House Discord server. It is a separate program from the website. It lives in this repo so the house's code is in one place.
 
 ## What it does
 
@@ -45,7 +45,7 @@ The bot never hands out a role that carries moderator permissions through a menu
 
 ## One-time Discord setup
 
-1. Go to https://discord.com/developers/applications and click **New Application**.
+1. Go to https://discord.com/developers/applications and click **New Application**. Name it **Averite**. That is the name people see in the server.
 2. Open the **Bot** tab. Click **Reset Token** and copy it. Treat it like a password. On the same page, turn on **Server Members Intent**. Without it the bot cannot see joins or nickname changes.
 3. Open **OAuth2 > URL Generator**. Tick the scopes `bot` and `applications.commands`. Tick the permissions **Manage Roles**, **Manage Nicknames**, **View Channels**, **Send Messages** and **Embed Links**. Open the URL and add the bot to the Avery server.
 4. In **Server Settings > Roles**, drag the bot's role above every role it should manage. Discord only lets a bot touch roles below its own. It can never rename the server owner.
@@ -88,14 +88,14 @@ Tests need no token and no network:
 
 ## Keeping it running on the server
 
-The bot has to stay running. `avery-discord-bot.service` is a systemd unit modelled on the website's:
+The bot has to stay running. `averite.service` is a systemd unit modelled on the website's:
 
     sudo pip install -r /srv/avery-website/discord_bot/requirements.txt
     sudo mkdir -p /srv/avery-website/discord_bot/data
     sudo chown www-data /srv/avery-website/discord_bot/data
-    sudo cp avery-discord-bot.service /etc/systemd/system/
-    sudo systemctl enable --now avery-discord-bot.service
+    sudo cp averite.service /etc/systemd/system/
+    sudo systemctl enable --now averite.service
 
 ## Privacy
 
-Names and emails are kept in `data/avery.db` on the machine that runs the bot. That folder and `.env` are ignored by git. Roster uploads go straight from Discord to the bot and are not posted in any channel. Only moderators can look up who someone is.
+Names and emails are kept in `data/averite.db` on the machine that runs the bot. That folder and `.env` are ignored by git. Roster uploads go straight from Discord to the bot and are not posted in any channel. Only moderators can look up who someone is.

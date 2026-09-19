@@ -1,4 +1,4 @@
-"""Avery House Discord bot.
+"""Averite, the Avery House Discord bot.
 
 Configuration comes from environment variables (see .env.example):
     DISCORD_TOKEN      required, from the Discord Developer Portal
@@ -17,11 +17,11 @@ from discord.ext import commands
 
 from db import Database
 
-log = logging.getLogger('avery-bot')
+log = logging.getLogger('averite')
 EXTENSIONS = ('cogs.house', 'cogs.verification', 'cogs.roles')
 
 
-class AveryBot(commands.Bot):
+class Averite(commands.Bot):
     def __init__(self, db=None):
         intents = discord.Intents.default()
         # Needed to see joins and nickname changes. Also has to be switched on
@@ -62,4 +62,4 @@ if __name__ == '__main__':
     token = os.environ.get('DISCORD_TOKEN')
     if not token:
         raise SystemExit('DISCORD_TOKEN is not set. See discord_bot/README.md.')
-    AveryBot().run(token, log_handler=None)
+    Averite().run(token, log_handler=None)

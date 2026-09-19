@@ -1,4 +1,4 @@
-"""Everything the bot remembers, in one small SQLite file (data/avery.db).
+"""Everything the bot remembers, in one small SQLite file (data/averite.db).
 
 Holds names and emails, so the file stays on the server and out of git.
 """
@@ -7,7 +7,7 @@ import sqlite3
 import time
 from pathlib import Path
 
-DEFAULT_PATH = Path(__file__).parent / 'data' / 'avery.db'
+DEFAULT_PATH = Path(__file__).parent / 'data' / 'averite.db'
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS settings (
