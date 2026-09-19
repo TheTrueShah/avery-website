@@ -130,6 +130,6 @@ def server():
         [('Bot', 10), ('Member', 5), ('Unverified', 4), ('2027', 3), ('2028', 3), ('Full Member', 2)], start=10)}
     roles['ExComm'] = FakeRole(30, 'ExComm', 20, perms=discord.Permissions(manage_roles=True).value)
     g.roles = [everyone] + list(roles.values())
-    g.me = FakeMember(500, 'avery-bot', g, [everyone, roles['Bot']])
+    g.me = FakeMember(500, 'averite', g, [everyone, roles['Bot']])
     g.channels[700] = FakeChannel(700)
     return g, roles, everyone
